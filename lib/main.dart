@@ -13,10 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.red),
+        theme: ThemeData(primarySwatch: Colors.red),
         home: const MyHomePage(
-      title: 'Hello',
-    ));
+          title: 'Hello',
+        ));
   }
 }
 
@@ -59,19 +59,18 @@ class _MyHomePageState extends State<MyHomePage> {
         key: _formKey,
         child: ListView(
           children: [
-          const Center(
-                child: Text(
-                  'WELCOME!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                  ),
+            const Center(
+              child: Text(
+                'WELCOME!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
-            
-           const Image(
+            ),
+            const Image(
               image: NetworkImage(
                   'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/60c2c9c4-c5db-443a-ba53-0acc0a5875e7/d6rix0y-15ae5f98-07e3-44fb-bd82-903c1c131167.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzYwYzJjOWM0LWM1ZGItNDQzYS1iYTUzLTBhY2MwYTU4NzVlN1wvZDZyaXgweS0xNWFlNWY5OC0wN2UzLTQ0ZmItYmQ4Mi05MDNjMWMxMzExNjcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.67CoRyuj9PQyCA6k9WrP_iwX0CNy1TF0jiN75eRaJb8'),
               height: 200,
@@ -96,14 +95,14 @@ class _MyHomePageState extends State<MyHomePage> {
               child: TextFormField(
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
-                  return 'Please enter your email';
-                    }else if (value.isEmpty ||
-                    !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                    .hasMatch(value)) {
-                      return 'Please enter a valid email!';
-                    }
-                      return null;
-                      },
+                    return 'Please enter your email';
+                  } else if (value.isEmpty ||
+                      !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(value)) {
+                    return 'Please enter a valid email!';
+                  }
+                  return null;
+                },
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
@@ -127,10 +126,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.all(18),
+              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
               width: 600,
               child: DropdownButtonFormField<String>(
-                validator: (value) => value == null ? 'Please select your gender' : null,
+                validator: (value) =>
+                    value == null ? 'Please select your gender' : null,
                 isExpanded: true,
                 hint: const Text("Select your gender"),
                 value: currentSelectedValue,
@@ -151,17 +151,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                       SnackBar(
-                        content: const Text('You have successfully signed up!'),
-                        action: SnackBarAction(label: 'OK', onPressed: () {}, 
-                        ),
-                    )
-                    );
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: const Text('You have successfully signed up!'),
+                      action: SnackBarAction(
+                        label: 'OK',
+                        onPressed: () {},
+                      ),
+                    ));
                   }
                 },
-                child: const Text('Sign Up')
-                )
+                child: const Text('Sign Up'))
           ],
         ),
       ),
