@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.red),
+        theme: ThemeData(primarySwatch: Colors.indigo),
         home: const MyHomePage(
           title: 'Hello',
         ));
@@ -149,18 +149,22 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: const Text('You have successfully signed up!'),
-                      action: SnackBarAction(
-                        label: 'OK',
-                        onPressed: () {},
-                      ),
-                    ));
-                  }
-                },
-                child: const Text('Sign Up'))
+              child: const Text('Sign Up'),
+              onPressed: _formKey.currentState?.validate() ?? false
+                  ? () {
+                      if (_formKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content:
+                              const Text('You have successfully signed up!'),
+                          action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {},
+                          ),
+                        ));
+                      }
+                    }
+                  : null,
+            )
           ],
         ),
       ),
