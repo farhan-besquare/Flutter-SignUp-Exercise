@@ -93,12 +93,16 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: EdgeInsets.all(10),
               child: TextFormField(
-                validator: (value) {
+                validator: (String? value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  return null;
-                },
+                  return 'Please enter your email';
+                    }else if (value.isEmpty ||
+                    !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                    .hasMatch(value)) {
+                      return 'Please enter a valid email!';
+                    }
+                      return null;
+                      },
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
@@ -115,8 +119,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   return null;
                 },
                 obscureText: true,
-                decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     labelText: 'Password',
                     hintText: 'Enter your secure password'),
               ),
