@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 200,
             ),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
               child: TextFormField(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -85,13 +85,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   return null;
                 },
                 decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.person_outline_rounded),
                     border: OutlineInputBorder(),
                     labelText: 'Full Name',
                     hintText: 'Enter your full name as indicated in your IC'),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
               child: TextFormField(
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
@@ -104,13 +105,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   return null;
                 },
                 decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.mail_outline_rounded),
                     border: OutlineInputBorder(),
                     labelText: 'Email',
                     hintText: 'Enter a valid mail id such as abc@gmail.com'),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
               child: TextFormField(
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -120,13 +122,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 obscureText: true,
                 decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.lock_outline_rounded),
                     border: OutlineInputBorder(),
                     labelText: 'Password',
                     hintText: 'Enter your secure password'),
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+              padding: const EdgeInsets.only(
+                  left: 40, right: 40, top: 10, bottom: 15),
               width: 600,
               child: DropdownButtonFormField<String>(
                 validator: (value) =>
@@ -148,23 +152,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),
-            ElevatedButton(
-              child: const Text('Sign Up'),
-              onPressed: _formKey.currentState?.validate() ?? false
-                  ? () {
-                      if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content:
-                              const Text('You have successfully signed up!'),
-                          action: SnackBarAction(
-                            label: 'OK',
-                            onPressed: () {},
-                          ),
-                        ));
-                      }
-                    }
-                  : null,
-            )
+            Container(
+                padding: const EdgeInsets.only(left: 40, right: 40),
+                child: ElevatedButton(
+                  child: const Text('Sign Up'),
+                  onPressed: _formKey.currentState?.validate() ?? false
+                      ? () {
+                          if (_formKey.currentState!.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: const Text(
+                                  'You have successfully signed up!'),
+                              action: SnackBarAction(
+                                label: 'OK',
+                                onPressed: () {},
+                              ),
+                            ));
+                          }
+                        }
+                      : null,
+                ))
           ],
         ),
       ),
